@@ -1,0 +1,32 @@
+$name: 'comment-btn';
+
+.#{$name} {
+    color: #999999;
+    border: none;
+    border-radius: 3px;
+    position: relative;
+}
+
+// scaffolding
+// =====
+
+// modifiers
+// =====
+
+.#{$name} {
+
+    // theme
+    &-default {
+        background-color: #ececec;
+    }
+
+    &-primary {
+        color: #ffffff;
+        background-color: #38bc9c;
+    }
+
+    &-danger {
+        color: #ffffff;
+        background-color: #ff493c;
+    }
+}

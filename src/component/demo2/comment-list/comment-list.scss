@@ -1,0 +1,23 @@
+$name: 'comment-list';
+
+.#{$name} {
+    position: relative;
+}
+
+// scaffolding
+// =====
+
+.#{$name} {
+    &-wrapper {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    &-item {
+        border-bottom: solid 1px #999999;
+    }
+
+    &-item:last-child {
+        border-bottom: none;
+    }
+}

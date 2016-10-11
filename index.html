@@ -9,10 +9,15 @@
             height: 100%;
             margin: 0;
         }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
-    <markdown-editor></markdown-editor>
+    <!-- <markdown-editor></markdown-editor> -->
+    <comment-box></comment-box>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/knockout/build/output/knockout-latest.debug.js"></script>
     <script src="./node_modules/knockout.slot/dest/knockout.slot.js"></script>

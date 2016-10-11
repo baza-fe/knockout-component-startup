@@ -1,0 +1,18 @@
+$name: 'comment-form';
+
+.#{$name} {
+    position: relative;
+}
+
+// scaffolding
+// =====
+
+.#{$name} {
+    &-input,
+    &-textarea {
+        border: solid 1px #999999;
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

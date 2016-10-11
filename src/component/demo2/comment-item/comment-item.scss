@@ -1,0 +1,14 @@
+$name: 'comment-item';
+
+.#{$name} {
+    position: relative;
+}
+
+// scaffolding
+// =====
+
+.#{$name} {
+    &-title {
+        margin: 0;
+    }
+}
