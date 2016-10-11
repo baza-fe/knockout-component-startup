@@ -30,13 +30,19 @@ function renderJs(name) {
         '',
         `export default {`,
         '    constructor(opts) {',
+        '',
         '    },',
         '',
         '    defaults: {',
+        '',
         '    },',
         '',
         '    methods: {',
-        '    }',
+        '',
+        '    },',
+        '',
+        '    style,',
+        '    template',
         '}'
     ].join('\n');
 };
@@ -46,10 +52,15 @@ function renderStyle(name) {
         `$name: '${name}';`,
         '',
         '.#{$name} {',
+        '',
         '}',
         '',
         '// scaffloding',
-        '// ====='
+        '// =====',
+        '',
+        '.#{$name} {',
+        '',
+        '}',
     ].join('\n');
 }
 

@@ -1,0 +1,26 @@
+$name: 'topic';
+
+.#{$name} {
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+}
+
+// scaffloding
+// =====
+
+.#{$name} {
+    &-header,
+    &-title,
+    &-content {
+        margin-bottom: 0;
+    }
+
+    &-title {
+        margin-bottom: 20px;
+    }
+
+    &-content {
+        color: #6d6d6d
+    }
+}

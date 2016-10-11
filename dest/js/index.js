@@ -1710,6 +1710,178 @@ __ko_component__$2.style = __ko_component__$2.style || __ko_component_style__$1;
 __ko_component__$2.template = __ko_component__$2.template || __ko_component_template__$1;
 ko.components.register(__ko_component__$2);
 
+var template$6 = "<div class=\"headline ui-basis\">\n    <div class=\"g g--row\">\n        <div class=\"c\"></div>\n        <div class=\"c c--3of5\">\n            <h1 class=\"h tac\" data-bind=\"text: text\"></h1>\n        </div>\n        <div class=\"c\"></div>\n    </div>\n</div>\n";
+
+var __ko_component_label__$7 = 'headline';
+var __ko_component_style__$7 = '';
+var __ko_component_template__$7 = '';
+var __ko_component__$14 = {
+    constructor: function constructor(opts) {
+        this.text = opts.text;
+    },
+
+
+    defaults: {
+        text: '标题'
+    },
+
+    template: template$6
+};
+__ko_component__$14.name = __ko_component__$14.name || __ko_component_label__$7;
+__ko_component__$14.style = __ko_component__$14.style || __ko_component_style__$7;
+__ko_component__$14.template = __ko_component__$14.template || __ko_component_template__$7;
+ko.components.register(__ko_component__$14);
+
+var style$6 = ".avatar {\n  width: 24px;\n  height: 24px;\n  position: relative; }\n\n.avatar-img {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%; }\n";
+
+var template$7 = "<div class=\"avatar\">\n    <img class=\"avatar-img\" data-bind=\"attr: _getImageAttrBind()\" />\n</div>\n";
+
+var __ko_component_label__$10 = 'avatar';
+var __ko_component_style__$10 = '';
+var __ko_component_template__$10 = '';
+var __ko_component__$20 = {
+    constructor: function constructor(opts) {
+        this.src = opts.src;
+        this.alt = opts.alt;
+    },
+
+
+    defaults: {
+        src: '',
+        alt: ''
+    },
+
+    methods: {
+        _getImageAttrBind: function _getImageAttrBind() {
+            return {
+                src: this.src,
+                alt: ''
+            };
+        }
+    },
+
+    style: style$6,
+    template: template$7
+};
+__ko_component__$20.name = __ko_component__$20.name || __ko_component_label__$10;
+__ko_component__$20.style = __ko_component__$20.style || __ko_component_style__$10;
+__ko_component__$20.template = __ko_component__$20.template || __ko_component_template__$10;
+ko.components.register(__ko_component__$20);
+
+var style$7 = ".topic {\n  margin-left: 10px;\n  margin-right: 10px;\n  position: relative; }\n\n.topic-header, .topic-title, .topic-content {\n  margin-bottom: 0; }\n\n.topic-title {\n  margin-bottom: 20px; }\n\n.topic-content {\n  color: #6d6d6d; }\n";
+
+var template$8 = "<div class=\"topic\">\n    <p class=\"topic-header\">\n        <avatar k-src=\"avatar\"></avatar>\n        <span class=\"topic-author\" data-bind=\"text: author\"></span>\n    </p>\n    <h2 class=\"topic-title\" data-bind=\"text: title\"></h2>\n    <p class=\"topic-content\" data-bind=\"html: content\"></p>\n</div>\n";
+
+var __ko_component_label__$9 = 'topic';
+var __ko_component_style__$9 = '';
+var __ko_component_template__$9 = '';
+var __ko_component__$18 = {
+    constructor: function constructor(opts) {
+        this.author = opts.author;
+        this.title = opts.title;
+        this.content = opts.content;
+        this.avatar = opts.avatar;
+    },
+
+
+    defaults: {
+        author: '',
+        lable: '',
+        title: '',
+        content: ''
+    },
+
+    style: style$7,
+    template: template$8
+};
+__ko_component__$18.name = __ko_component__$18.name || __ko_component_label__$9;
+__ko_component__$18.style = __ko_component__$18.style || __ko_component_style__$9;
+__ko_component__$18.template = __ko_component__$18.template || __ko_component_template__$9;
+ko.components.register(__ko_component__$18);
+
+var style$8 = ".topic-list {\n  position: relative; }\n";
+
+var template$9 = "<div class=\"topic-list\">\n    <ul class=\"topic-list-wrapper vlist vlist--loose vlist--basis vlist--solid\" data-bind=\"foreach: topics\">\n        <li class=\"topic-list-item\">\n            <topic k-avatar=\"avatar\"\n                   k-author=\"author\"\n                   k-title=\"title\"\n                   k-content=\"content\">\n            </topic>\n        </li>\n    </ul>\n</div>\n";
+
+var __ko_component_label__$8 = 'topic-list';
+var __ko_component_style__$8 = '';
+var __ko_component_template__$8 = '';
+var __ko_component__$16 = {
+    constructor: function constructor(opts) {
+        this.url = opts.url;
+        this.topics = ko.observableArray(opts.topics);
+    },
+
+
+    defaults: {
+        url: '',
+        topics: []
+    },
+
+    methods: {
+        _getTopics: function _getTopics() {
+            return $.get(this.url).then(function (result) {
+                return result.data.map(function (item) {
+                    return {
+                        avatar: item.author.avatar_url,
+                        author: item.author.loginname,
+                        title: item.title,
+                        content: item.content
+                    };
+                });
+            });
+        },
+        fetch: function fetch() {
+            var _this = this;
+
+            return this._getTopics().then(function (topics) {
+                topics.forEach(function (topic) {
+                    _this.topics.push(topic);
+                });
+            });
+        }
+    },
+
+    style: style$8,
+    template: template$9
+};
+__ko_component__$16.name = __ko_component__$16.name || __ko_component_label__$8;
+__ko_component__$16.style = __ko_component__$16.style || __ko_component_style__$8;
+__ko_component__$16.template = __ko_component__$16.template || __ko_component_template__$8;
+ko.components.register(__ko_component__$16);
+
+var style$9 = ".index {\n  position: relative; }\n";
+
+var template$10 = "<div class=\"index\">\n    <headline text=\"CNode\"></headline>\n    <topic-list k-url=\"url\"></topic-list>\n</div>\n";
+
+var __ko_component_label__$6 = 'index';
+var __ko_component_style__$6 = '';
+var __ko_component_template__$6 = '';
+var __ko_component__$12 = {
+    constructor: function constructor(opts) {
+        this.url = opts.url;
+    },
+
+
+    defaults: {
+        url: ''
+    },
+
+    methods: {
+        ready: function ready() {
+            this.topicList = this.ref('topic-list');
+            this.topicList.fetch();
+        }
+    },
+
+    style: style$9,
+    template: template$10
+};
+__ko_component__$12.name = __ko_component__$12.name || __ko_component_label__$6;
+__ko_component__$12.style = __ko_component__$12.style || __ko_component_style__$6;
+__ko_component__$12.template = __ko_component__$12.template || __ko_component_template__$6;
+ko.components.register(__ko_component__$12);
+
 ko.components.apply('body');
 
 }());

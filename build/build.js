@@ -13,7 +13,8 @@ const commonjs = require('rollup-plugin-commonjs');
 function getRollupIncludeList() {
     const rootPathList = [
         './src/component/demo1/',
-        './src/component/demo2/'
+        './src/component/demo2/',
+        './src/component/demo3/'
     ];
     const includePathList = [];
 
