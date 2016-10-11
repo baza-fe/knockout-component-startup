@@ -12,7 +12,8 @@ const commonjs = require('rollup-plugin-commonjs');
 
 function getRollupIncludeList() {
     const rootPathList = [
-        './src/component/'
+        './src/component/demo1/',
+        './src/component/demo2/'
     ];
     const includePathList = [];
 
@@ -28,7 +29,7 @@ function getRollupIncludeList() {
 }
 
 function compile(entry, dest) {
-    rollup.rollup({
+    return rollup.rollup({
         entry: entry,
         plugins: [
             instruction({ include: ['./src/js/entry/**'], vars: { DEV: true } }),
