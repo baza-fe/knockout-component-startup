@@ -1,0 +1,34 @@
+$name: 'markdown-editor';
+
+#{$name},
+.#{$name} {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+// scaffolding
+// =====
+
+.#{$name} {
+    &-textarea,
+    &-content {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+
+    &-textarea {
+        border: none;
+        resize: none;
+        overflow: auto;
+        font-size: 24px;
+        box-sizing: border-box;
+    }
+
+    &-textarea:focus,
+    &-textarea:active {
+        outline: none;
+    }
+}
