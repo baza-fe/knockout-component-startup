@@ -4,11 +4,11 @@ import template from './comment-list.tpl';
 
 export default {
     constructor(opts) {
-        this.comments = ko.observableArray(opts.comments);
+        this.comments = ko.observableArray(opts.comments || []);
     },
 
     defaults: {
-        comments: []
+        comments: null
     },
 
     methods: {

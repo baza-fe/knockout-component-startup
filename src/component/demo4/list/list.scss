@@ -1,0 +1,14 @@
+$name: 'list';
+
+.#{$name} {
+    position: relative;
+}
+
+// scaffloding
+// =====
+
+.#{$name} {
+    .active {
+        color: red;
+    }
+}
