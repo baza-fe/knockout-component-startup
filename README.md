@@ -41,13 +41,3 @@ npm install knockout.filter \
     + scss/
 index.html
 ```
-
-## Demos
-
-### Markdown Editor
-
-Install Packages:
-
-```bash
-npm install marked --save
-```
