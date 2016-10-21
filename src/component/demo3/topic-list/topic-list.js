@@ -3,19 +3,14 @@ import style from './topic-list.scss';
 import template from './topic-list.tpl';
 
 export default {
-    constructor(opts) {
-        this.url = opts.url;
-        this.topics = ko.observableArray(opts.topics);
-    },
-
-    defaults: {
-        url: '',
-        topics: []
+    props: {
+        url: ko.types.string,
+        topics: ko.types.array
     },
 
     methods: {
         _getTopics() {
-            return $.get(this.url)
+            return $.get(this.url())
                 .then((result) => {
                     return result.data.map((item) => {
                         return {

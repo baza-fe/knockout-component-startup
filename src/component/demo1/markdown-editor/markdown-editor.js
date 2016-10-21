@@ -3,19 +3,16 @@ import style from './markdown-editor.scss';
 import template from './markdown-editor.tpl';
 
 export default {
-    constructor(opts) {
-        this.html = ko.observable(opts.html);
-        this.markdown = ko.observable(opts.markdown);
-
-        this._onMarkdownChanged = this._onMarkdownChanged.bind(this);
-    },
-
-    defaults: {
-        markdown: '',
-        html: ''
+    props: {
+        markdown: ko.types.string,
+        html: ko.types.string
     },
 
     methods: {
+        created() {
+            this._onMarkdownChanged = this._onMarkdownChanged.bind(this);
+        },
+
         ready() {
             this.markdown.subscribe(this._onMarkdownChanged);
         },

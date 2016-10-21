@@ -3,13 +3,12 @@ import style from './comment-btn.scss';
 import template from './comment-btn.tpl';
 
 export default {
-    constructor(opts) {
-        this.text = ko.observable(opts.text);
-        this.theme = opts.theme;
-    },
-
-    defaults: {
-        theme: 'default'
+    props: {
+        text: ko.types.string,
+        theme: {
+            type: ko.types.oneOf('default', 'primary', 'danger'),
+            default: 'default'
+        }
     },
 
     mixins: [
@@ -29,7 +28,7 @@ export default {
             return {
                 'class': [
                     this.componentInfo.name,
-                    `${this.componentInfo.name}-${this.theme}`
+                    `${this.componentInfo.name}-${this.theme()}`
                 ].join(' ')
             }
         }
