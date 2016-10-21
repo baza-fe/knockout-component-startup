@@ -1,6 +1,6 @@
 {
   "name": "knockout-component-startup",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "knockout component startup",
   "main": "index.js",
   "scripts": {
