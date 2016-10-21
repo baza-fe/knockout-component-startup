@@ -14,7 +14,8 @@ function getRollupIncludeList() {
     const rootPathList = [
         './src/component/demo1/',
         './src/component/demo2/',
-        './src/component/demo3/'
+        './src/component/demo3/',
+        './src/component/demo4/'
     ];
     const includePathList = [];
 
