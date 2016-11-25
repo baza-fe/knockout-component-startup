@@ -1,7 +1,6 @@
 const fs = require('fs');
 const rollup = require('rollup');
-const babelrc = require('babelrc-rollup').default;
-const babel = require('rollup-plugin-babel');
+const buble = require('rollup-plugin-buble');
 const sass = require('rollup-plugin-sass');
 const string = require('rollup-plugin-string');
 const json = require('rollup-plugin-json');
@@ -40,7 +39,7 @@ function compile(entry, dest) {
             nodeResolve({ jsnext: true, main: true }),
             commonjs(),
             ko({ include: getRollupIncludeList() }),
-            babel(babelrc())
+            buble()
         ],
         context: 'window'
     }).then(function (bundle) {

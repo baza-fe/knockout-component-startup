@@ -8,7 +8,7 @@ Install from NPM:
 ```bash
 # rollup stuff
 npm install rollup \
-            rollup-plugin-babel \
+            rollup-plugin-buble \
             rollup-plugin-json \
             rollup-plugin-sass \
             rollup-plugin-string \
