@@ -22,9 +22,7 @@
     "jquery": "^3.1.1",
     "knockout": "^3.4.0",
     "knockout.filter": "0.0.8",
-    "knockout.lifecycle": "0.0.4",
-    "knockout.register": "0.0.8",
-    "knockout.slot": "0.0.2",
+    "knockout.register": "0.2.4",
     "marked": "^0.3.6"
   }
 }

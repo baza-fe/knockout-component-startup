@@ -1320,19 +1320,16 @@ var __ko_component_label__ = 'markdown-editor';
 var __ko_component_style__ = '';
 var __ko_component_template__ = '';
 var __ko_component__ = {
-    constructor: function constructor(opts) {
-        this.html = ko.observable(opts.html);
-        this.markdown = ko.observable(opts.markdown);
-
-        this._onMarkdownChanged = this._onMarkdownChanged.bind(this);
-    },
-
-    defaults: {
-        markdown: '',
-        html: ''
+    props: {
+        html: ko.types.string,
+        markdown: ko.types.string
     },
 
     methods: {
+        created: function created() {
+            this._onMarkdownChanged = this._onMarkdownChanged.bind(this);
+        },
+
         ready: function ready() {
             this.markdown.subscribe(this._onMarkdownChanged);
         },
@@ -1362,14 +1359,9 @@ var __ko_component_label__$3 = 'comment-item';
 var __ko_component_style__$3 = '';
 var __ko_component_template__$3 = '';
 var __ko_component__$6 = {
-    constructor: function constructor(opts) {
-        this.title = ko.observable(opts.title);
-        this.comment = ko.observable(opts.comment);
-    },
-
-    defaults: {
-        title: '',
-        comment: ''
+    props: {
+        title: ko.types.string,
+        comment: ko.types.string
     },
 
     style: style$1,
@@ -1388,12 +1380,11 @@ var __ko_component_label__$2 = 'comment-list';
 var __ko_component_style__$2 = '';
 var __ko_component_template__$2 = '';
 var __ko_component__$4 = {
-    constructor: function constructor(opts) {
-        this.comments = ko.observableArray(opts.comments);
-    },
-
-    defaults: {
-        comments: []
+    props: {
+        comments: ko.types.arrayOf(ko.types.shape({
+            title: ko.types.string,
+            comment: ko.types.string
+        }))
     },
 
     methods: {
@@ -1485,13 +1476,12 @@ var __ko_component_label__$5 = 'comment-btn';
 var __ko_component_style__$5 = '';
 var __ko_component_template__$5 = '';
 var __ko_component__$10 = {
-    constructor: function constructor(opts) {
-        this.text = ko.observable(opts.text);
-        this.theme = opts.theme;
-    },
-
-    defaults: {
-        theme: 'default'
+    props: {
+        text: ko.types.string,
+        theme: {
+            type: ko.types.oneOf('default', 'primary', 'danger'),
+            default: 'default'
+        }
     },
 
     mixins: [eventMixin],
@@ -1506,8 +1496,10 @@ var __ko_component__$10 = {
         },
 
         _getRootAttrBind: function _getRootAttrBind() {
+            var name = this.componentInfo.name;
+
             return {
-                'class': [this.componentInfo.name, ((this.componentInfo.name) + "-" + (this.theme))].join(' ')
+                'class': [name, (name + "-" + (this.theme()))].join(' ')
             };
         }
     },
@@ -1531,22 +1523,19 @@ var ERR_EMPTY_TITLE = '请输入标题';
 var ERR_EMPTY_COMMENT = '请输入评论';
 
 var __ko_component__$8 = {
-    constructor: function constructor(opts) {
-        this.title = ko.observable(opts.title);
-        this.comment = ko.observable(opts.comment);
-
-        this._onSubmit = this._onSubmit.bind(this);
-        this._onClear = this._onClear.bind(this);
-    },
-
-    defaults: {
-        title: '',
-        comment: ''
+    props: {
+        title: ko.types.string,
+        comment: ko.types.string
     },
 
     mixins: [eventMixin],
 
     methods: {
+        created: function created() {
+            this._onSubmit = this._onSubmit.bind(this);
+            this._onClear = this._onClear.bind(this);
+        },
+
         ready: function ready() {
             this.clear();
         },
@@ -1562,12 +1551,6 @@ var __ko_component__$8 = {
         },
 
         submit: function submit() {
-            var errMsg = this.validate();
-
-            if (errMsg) {
-                return alert(errMsg);
-            }
-
             this.trigger('submit', {
                 title: this.title(),
                 comment: this.comment()
@@ -1581,8 +1564,14 @@ var __ko_component__$8 = {
         },
 
         _onSubmit: function _onSubmit() {
-            this.submit();
-            this.clear();
+            var errMsg = this.validate();
+
+            if (errMsg) {
+                return alert(errMsg);
+            } else {
+                this.submit();
+                this.clear();
+            }
         },
 
         _onClear: function _onClear() {
@@ -1606,11 +1595,11 @@ var __ko_component_label__$1 = 'comment-box';
 var __ko_component_style__$1 = '';
 var __ko_component_template__$1 = '';
 var __ko_component__$2 = {
-    constructor: function constructor(opts) {
-        this._onFormSubmitted = this._onFormSubmitted.bind(this);
-    },
-
     methods: {
+        created: function created() {
+            this._onFormSubmitted = this._onFormSubmitted.bind(this);
+        },
+
         ready: function ready() {
             this.commentList = this.ref('comment-list');
             this.commentForm = this.ref('comment-form');
@@ -1637,12 +1626,11 @@ var __ko_component_label__$7 = 'headline';
 var __ko_component_style__$7 = '';
 var __ko_component_template__$7 = '';
 var __ko_component__$14 = {
-    constructor: function constructor(opts) {
-        this.text = opts.text;
-    },
-
-    defaults: {
-        text: '标题'
+    props: {
+        text: {
+            type: ko.types.String,
+            default: '标题'
+        }
     },
 
     template: template$6
@@ -1660,14 +1648,9 @@ var __ko_component_label__$10 = 'avatar';
 var __ko_component_style__$10 = '';
 var __ko_component_template__$10 = '';
 var __ko_component__$20 = {
-    constructor: function constructor(opts) {
-        this.src = opts.src;
-        this.alt = opts.alt;
-    },
-
-    defaults: {
-        src: '',
-        alt: ''
+    props: {
+        src: ko.types.string,
+        alt: ko.types.string
     },
 
     methods: {
@@ -1695,18 +1678,11 @@ var __ko_component_label__$9 = 'topic';
 var __ko_component_style__$9 = '';
 var __ko_component_template__$9 = '';
 var __ko_component__$18 = {
-    constructor: function constructor(opts) {
-        this.author = opts.author;
-        this.title = opts.title;
-        this.content = opts.content;
-        this.avatar = opts.avatar;
-    },
-
-    defaults: {
-        author: '',
-        lable: '',
-        title: '',
-        content: ''
+    props: {
+        avatar: ko.types.string,
+        author: ko.types.string,
+        title: ko.types.string,
+        content: ko.types.string
     },
 
     style: style$7,
@@ -1725,19 +1701,19 @@ var __ko_component_label__$8 = 'topic-list';
 var __ko_component_style__$8 = '';
 var __ko_component_template__$8 = '';
 var __ko_component__$16 = {
-    constructor: function constructor(opts) {
-        this.url = opts.url;
-        this.topics = ko.observableArray(opts.topics);
-    },
-
-    defaults: {
-        url: '',
-        topics: []
+    props: {
+        url: ko.types.string,
+        topics: ko.types.arrayOf(ko.types.shape({
+            avatar: ko.types.string,
+            author: ko.types.string,
+            title: ko.types.string,
+            content: ko.types.string
+        }))
     },
 
     methods: {
         _getTopics: function _getTopics() {
-            return $.get(this.url).then(function (result) {
+            return $.get(this.url()).then(function (result) {
                 return result.data.map(function (item) {
                     return {
                         avatar: item.author.avatar_url,
@@ -1776,12 +1752,8 @@ var __ko_component_label__$6 = 'index';
 var __ko_component_style__$6 = '';
 var __ko_component_template__$6 = '';
 var __ko_component__$12 = {
-    constructor: function constructor(opts) {
-        this.url = opts.url;
-    },
-
-    defaults: {
-        url: ''
+    props: {
+        url: ko.types.string
     },
 
     methods: {

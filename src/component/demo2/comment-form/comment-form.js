@@ -7,17 +7,9 @@ const ERR_EMPTY_TITLE = '请输入标题';
 const ERR_EMPTY_COMMENT = '请输入评论';
 
 export default {
-    constructor(opts) {
-        this.title = ko.observable(opts.title);
-        this.comment = ko.observable(opts.comment);
-
-        this._onSubmit = this._onSubmit.bind(this);
-        this._onClear = this._onClear.bind(this);
-    },
-
-    defaults: {
-        title: '',
-        comment: ''
+    props: {
+        title: ko.types.string,
+        comment: ko.types.string
     },
 
     mixins: [
@@ -25,6 +17,11 @@ export default {
     ],
 
     methods: {
+        created() {
+            this._onSubmit = this._onSubmit.bind(this);
+            this._onClear = this._onClear.bind(this);
+        },
+
         ready() {
             this.clear();
         },
@@ -40,12 +37,6 @@ export default {
         },
 
         submit() {
-            const errMsg = this.validate();
-
-            if (errMsg) {
-                return alert(errMsg);
-            }
-
             this.trigger('submit', {
                 title: this.title(),
                 comment: this.comment()
@@ -59,8 +50,14 @@ export default {
         },
 
         _onSubmit() {
-            this.submit();
-            this.clear();
+            const errMsg = this.validate();
+
+            if (errMsg) {
+                return alert(errMsg);
+            } else {
+                this.submit();
+                this.clear();
+            }
         },
 
         _onClear() {

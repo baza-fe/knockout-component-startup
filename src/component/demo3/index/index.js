@@ -4,12 +4,8 @@ import style from './index.scss';
 import template from './index.tpl';
 
 export default {
-    constructor(opts) {
-        this.url = opts.url;
-    },
-
-    defaults: {
-        url: ''
+    props: {
+        url: ko.types.string
     },
 
     methods: {

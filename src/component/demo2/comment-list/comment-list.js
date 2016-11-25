@@ -3,12 +3,13 @@ import style from './comment-list.scss';
 import template from './comment-list.tpl';
 
 export default {
-    constructor(opts) {
-        this.comments = ko.observableArray(opts.comments);
-    },
-
-    defaults: {
-        comments: []
+    props: {
+        comments: ko.types.arrayOf(
+            ko.types.shape({
+                title: ko.types.string,
+                comment: ko.types.string
+            })
+        )
     },
 
     methods: {
