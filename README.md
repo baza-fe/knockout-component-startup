@@ -17,9 +17,6 @@ npm install rollup \
             rollup-plugin-node-resolve \
             rollup-plugin-commonjs -D
 
-# build stuff
-npm install babelrc-rollup -D
-
 # librarys
 npm install knockout jquery --save
 
