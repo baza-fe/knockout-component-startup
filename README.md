@@ -12,7 +12,7 @@ npm install rollup \
             rollup-plugin-json \
             rollup-plugin-sass \
             rollup-plugin-string \
-            ollup-plugin-if \
+            rollup-plugin-if \
             rollup-plugin-ko-component \
             rollup-plugin-node-resolve \
             rollup-plugin-commonjs -D
