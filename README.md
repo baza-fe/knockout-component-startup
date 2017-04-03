@@ -6,23 +6,11 @@ Knockout Component Demos
 Install from NPM:
 
 ```bash
-# rollup stuff
-npm install rollup \
-            rollup-plugin-buble \
-            rollup-plugin-json \
-            rollup-plugin-sass \
-            rollup-plugin-string \
-            rollup-plugin-if \
-            rollup-plugin-ko-component \
-            rollup-plugin-node-resolve \
-            rollup-plugin-commonjs -D
+# install packages
+npm install
 
-# librarys
-npm install knockout jquery --save
-
-# plugins
-npm install knockout.filter \
-            knockout.register  \ --save
+# build
+npm run build
 ```
 
 ## Scaffolding
