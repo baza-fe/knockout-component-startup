@@ -29,7 +29,7 @@ npm install knockout.filter \
 
 ```
 + build/
-+ dest
++ dest/
 - src/
     + component/
     + js/
@@ -39,10 +39,4 @@ index.html
 
 ## Demos
 
-### Markdown Editor
-
-Install Packages:
-
-```bash
-npm install marked --save
-```
+Remove comment brace in `index.html` to checkout demos.
