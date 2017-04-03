@@ -1,4 +1,3 @@
-(function () {
 'use strict';
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -1788,5 +1787,3 @@ ko.applyBindings({
         }
     ]
 });
-
-}());
