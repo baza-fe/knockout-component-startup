@@ -22,9 +22,7 @@ npm install knockout jquery --save
 
 # plugins
 npm install knockout.filter \
-            knockout.lifecycle \
-            knockout.register \
-            knockout.slot \ --save
+            knockout.register  \ --save
 ```
 
 ## Scaffolding
