@@ -2,14 +2,9 @@ import style from './avatar.scss';
 import template from './avatar.tpl';
 
 export default {
-    constructor(opts) {
-        this.src = opts.src;
-        this.alt = opts.alt;
-    },
-
-    defaults: {
-        src: '',
-        alt: ''
+    props: {
+        src: ko.types.string,
+        alt: ko.types.string
     },
 
     methods: {

@@ -1,12 +1,11 @@
 import template from './headline.tpl';
 
 export default {
-    constructor(opts) {
-        this.text = opts.text;
-    },
-
-    defaults: {
-        text: '标题'
+    props: {
+        text: {
+            type: ko.types.String,
+            default: '标题'
+        }
     },
 
     template
